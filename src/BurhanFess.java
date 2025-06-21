@@ -1,3 +1,4 @@
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class BurhanFess {
@@ -52,6 +53,52 @@ public class BurhanFess {
         int jawaban5 = input.nextInt();
         if (jawaban5 == 1) kodeVibe += 16;
 
-        input.close();
-    }
-}
+        // Pilih mode interpretasi
+        System.out.println("-----------------------------------------------------------");
+        System.out.print("Pilih mode interpretasi hasil (0 = If-Else, 1 = Switch-Case): ");
+        int mode = input.nextInt();
+        String hasil = "";
+        String via = "";
+
+        if (mode == 0) {
+            via = "If-Else";
+            if (kodeVibe >= 0 && kodeVibe <= 5) {
+                hasil = "Kamu tipe 'pengagum diam-diam'. MenFess-mu jarang, tapi kalau muncul bikin kaget.";
+            } else if (kodeVibe <= 10) {
+                hasil = "Kamu tipe 'semi-aktif'. Kadang muncul dengan kode, kadang ngilang.";
+            } else if (kodeVibe <= 15) {
+                hasil = "Kamu tipe 'suka bikin penasaran'. MenFess-mu bikin orang mikir, tapi kadang bikin bingung.";
+            } else if (kodeVibe <= 20) {
+                hasil = "Kamu tipe 'suka bikin drama'. MenFess-mu bikin orang penasaran, tapi terlalu banyak drama.";
+            } else if (kodeVibe <= 25) {
+                hasil = "Kamu tipe 'suka bikin orang mikir'. MenFess-mu bikin orang penasaran, tapi kadang bikin mereka mikir.";
+            } else {
+                hasil = "Kamu tipe 'rahasia'. MenFess-mu jarang muncul, tapi kalau muncul bikin orang penasaran siapa yang kirim.";
+            }
+        } else {
+            via = "Switch-Case";
+            switch (kodeVibe / 5) {
+                case 0:
+                    hasil = "Kamu tipe 'pengagum diam-diam'. MenFess-mu jarang, tapi kalau muncul bikin kaget.";
+                    break;
+                case 1:
+                    hasil = "Kamu tipe 'semi-aktif'. Kadang muncul dengan kode, kadang ngilang.";
+                    break;
+                case 2:
+                    hasil = "Kamu tipe 'suka bikin penasaran'. MenFess-mu bikin orang mikir, tapi kadang bikin bingung.";
+                    break;
+                case 3:
+                    hasil = "Kamu tipe 'suka bikin drama'. MenFess-mu bikin orang penasaran, tapi terlalu banyak drama.";
+                    break;
+                case 4:
+                    hasil = "Kamu tipe 'suka bikin orang mikir'. MenFess-mu bikin orang penasaran, tapi kadang bikin mereka mikir.";
+                    break;
+                default:
+                    hasil = "Kamu tipe 'rahasia'. MenFess-mu jarang muncul, tapi kalau muncul bikin orang penasaran siapa yang kirim.";
+                    break;
+            }
+        }
+
+        // Tampilkan hasil akhir
+        System.out.println(hasil + " : via " + via);
+
